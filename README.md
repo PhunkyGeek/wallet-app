@@ -1,78 +1,268 @@
-# Wallet App UI (Frontend Engineer Assessment)
+# Wallet App UI — Frontend Engineer Assessment
 
-A responsive wallet UI built from the provided Figma/screenshots with production-style structure, TypeScript, reusable components, and framework-portable patterns.
+This project is a responsive wallet application built from Figma designs to simulate a modern fintech user experience. It includes authentication, transactions, payments, and transfer flows, with a strong focus on design fidelity, usability, and scalability.
 
-## ✅ Implemented (Required)
+I designed and implemented this application to demonstrate component-driven architecture, a consistent design system, and a framework-agnostic structure that can be easily ported to other frontend frameworks.
 
-### Login
-- Email + password fields
-- Validation (email format, required, min password length)
-- Password show/hide toggle
-- “Remember me” checkbox
-- Password strength indicator (Weak/Fair/Good/Strong)
-- Loading state during mock authentication
-- Navigates to dashboard on success
+---
 
-### Home / Dashboard
-- Wallet balance with animated count-up
-- Recent transfers strip
-- Transactions list (10 mock transactions)
-- Filter transactions: All / Sent / Received
-- Search transactions (merchant + subtitle)
-- Bottom navigation (as per design)
-- Smooth page transitions (Framer Motion)
+## Project Overview
+
+The application replicates a mobile banking experience while remaining fully responsive across mobile, tablet, and desktop screens.
+
+It includes:
+
+* Authentication and onboarding flows
+* Wallet dashboard and card management
+* Bill payments and transfers
+* Profile and settings
+* Dark and light mode support
+* Reusable design system components
+
+---
+
+## Features Implemented
+
+### Authentication Flow
+
+* Splash screen
+* Mobile number login
+* Password login
+* Create account screen
+* Forgot password (email and mobile)
+* OTP verification with success state
+
+### Wallet & Cards
+
+* Home dashboard with balance and transaction history
+* Stacked cards interface
+* Responsive bottom navigation
+
+### Payments & Transfers
+
+* Bill payment flow
+* Secure payment confirmation step
+* Payment success screen
+* Transfer flow (contact selection → amount → secure payment → failure screen)
+
+### More & Settings
+
+* Grouped actions menu
+* Profile settings
+* Dark and light theme toggle
+
+### Design System
+
+* Reusable input components
+* Validation states (focus, error, success)
+* Phone input with country selector and flags
+* Consistent spacing, typography, and color tokens
+
+### UX Enhancements
+
+* Pixel-accurate Figma translation
+* Hidden scrollbars with smooth scrolling
+* Mobile-first layout with centered desktop framing
+* Native app-like experience across devices
+
+---
 
 ## Tech Stack
-- React + TypeScript + Vite
-- TailwindCSS (design tokens + responsive layout)
-- Zustand (lightweight state)
-- React Hook Form + Zod (validation)
 
-## Setup
+* React + TypeScript
+* Vite (development and build tooling)
+* Tailwind CSS (design tokens and styling)
+* React Router (navigation)
+* Zustand / Context API (state management)
+* react-phone-number-input + libphonenumber-js (phone formatting & validation)
+
+---
+
+## Setup & Installation
+
+### Clone repository
+
+```bash
+git clone <repo-url>
+cd wallet-app
+```
+
+### Install dependencies
 
 ```bash
 npm install
+```
+
+### Run development server
+
+```bash
 npm run dev
 ```
 
-Build:
+### Build for production
+
 ```bash
 npm run build
+```
+
+### Preview production build
+
+```bash
 npm run preview
 ```
 
-## Design Tokens
-Tokens live in `tailwind.config.ts`:
-- `brand.*` (purple palette)
-- `bg`, `line`, `muted`, `ink`
-- `shadow-card`, `rounded-3xl/xl2` for consistent UI feel
+---
 
-## How to Port This to Another Framework
+## Framework Choice & Reasoning
 
-### Vue
-- `components/ui/*` map directly to Vue SFC components (props + slots)
-- Zustand store → Pinia store (same shape: `isAuthed`, `user`, `login`, `logout`)
-- React Router → Vue Router (same `/` and `/home` routes)
-- Form layer can stay Zod-based (`vee-validate` + zod resolver)
+### React
 
-### Angular
-- UI components become Angular components (InputComponent, ButtonComponent, etc.)
-- Zustand store → Injectable AuthService with RxJS signals/subjects
-- Router mapping remains identical
-- Form logic ports to Reactive Forms + Zod-like custom validators
+I chose React for its component-based architecture, scalability, and extensive ecosystem. It allows reusable UI construction and flexible integration with validation and state management libraries.
 
-## Deployment (Netlify)
-- Build command: `npm run build`
-- Publish directory: `dist`
-- SPA routing: create a `_redirects` file with:
-  ```
-  /* /index.html 200
-  ```
+### TypeScript
 
-## Notes / Trade-offs
-- Icons are from `lucide-react` and simple logo badges are vector-ish placeholders to avoid external assets.
-- Bottom nav is UI-complete; tabs are currently local-state (easy to expand into additional screens).
+Type safety improves reliability, maintainability, and developer experience, especially in larger applications.
+
+### Tailwind CSS
+
+Tailwind enables design-token-driven styling, ensures visual consistency, and accelerates UI development.
+
+### Vite
+
+Vite provides a fast development server, efficient builds, and minimal configuration overhead.
+
+---
+
+## Design Decisions & Trade-offs
+
+### Component-driven architecture
+
+I built reusable components to ensure consistency and maintainability across screens.
+
+### Mobile-first layout
+
+The UI prioritizes mobile usability while scaling gracefully to larger viewports.
+
+### Fixed-height app frame
+
+A fixed viewport height creates a native mobile-app feel on desktop devices.
+
+### Hidden scrollbars
+
+Scrollbars are hidden for visual cleanliness while maintaining usability and smooth scrolling.
+
+---
+
+## Mobile Login Input — Design Trade-offs
+
+Creating the mobile login input required balancing UX fidelity with customization flexibility.
+
+### Approach used
+
+I implemented a custom country selector using `react-phone-number-input` with a fully customized country component to match the design:
+
+* flag
+* country code
+* custom caret icon
+* divider
+* input field
+
+### Why not use react-international-phone
+
+While react-international-phone provides built-in formatting and flags, its internal structure made pixel-perfect customization difficult.
+
+### Benefits of the chosen approach
+
+* full control over layout and styling
+* easier integration of custom icons and spacing
+* accurate visual match to the design guide
+* still retains libphonenumber-js validation and formatting
+
+### Trade-offs
+
+* required building a custom searchable dropdown
+* additional implementation complexity
+* manual flag asset handling
+
+This trade-off improved design fidelity and long-term maintainability.
+
+---
+
+## Portability to Other Frameworks
+
+The architecture is framework-agnostic and can be ported easily:
+
+| React           | Vue             | Angular            |
+| --------------- | --------------- | ------------------ |
+| Components      | SFC components  | Angular components |
+| Zustand/Context | Pinia           | Services           |
+| React Router    | Vue Router      | Angular Router     |
+| Hooks           | Composition API | RxJS               |
+
+Porting steps:
+
+1. Move UI components.
+2. Re-create routing.
+3. Replace state management.
+4. Reuse design tokens and styles.
+
+---
+
+## Challenges & Solutions
+
+### Pixel-perfect UI implementation
+
+I created reusable design tokens and inspected spacing from Figma to maintain consistency.
+
+### Custom mobile phone input
+
+I implemented a custom searchable country selector with formatting support to achieve full UI control.
+
+### Native mobile feel on desktop
+
+I implemented a fixed-height app frame with centered responsive layout.
+
+### Input validation consistency
+
+I created reusable input components with unified validation states.
+
+### Scroll behavior and hidden scrollbars
+
+I implemented cross-browser scrollbar hiding with smooth touch scrolling.
+
+---
 
 ## Screenshots
-Add your own screenshots/GIFs here after running locally.
+
+Include screenshots or GIFs demonstrating:
+
+* Authentication flow
+* Dashboard
+* Cards screen
+* Bill payment flow
+* Transfer flow
+* Dark mode
+
+---
+
+## Dark & Light Mode
+
+The application supports theme switching from Profile Settings with persistence using local storage and system preference detection.
+
+---
+
+## Future Improvements
+
+* Add micro-interactions and motion polish
+* Implement biometric authentication
+* Add spending analytics charts
+* Improve accessibility (ARIA & keyboard navigation)
+* Add unit and integration tests
+
+---
+
+## Author
+
+Ronald Abel
+
 
