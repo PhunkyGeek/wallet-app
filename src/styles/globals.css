@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap');
+@import "react-international-phone/style.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body { height: 100%; }
+/* Ensure font is applied even if Tailwind @apply isn't processed in some environments */
+body { @apply bg-bg text-ink; font-family: 'Sora', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+
+/* Dark mode overrides for common utility classes so existing markup picks up dark styles */
+.dark body { background-color: #05060a; color: #fff; }
+.dark .bg-white { background-color: #0B0F1A !important; }
+.dark .text-ink { color: #ffffff !important; }
+.dark .border-line { border-color: rgba(255,255,255,0.1) !important; }
+.dark .bg-bg { background-color: #05060a !important; }
+.dark .text-muted { color: #9CA3AF !important; }
+
+/* Theme helpers */
+.surface { @apply bg-white dark:bg-[#0B0F1A]; }
+.surface-border { @apply border-line dark:border-white/10; }
+
+:focus-visible { outline: none; }
+
+/* App scroll area: hide scrollbars but keep scrolling */
+.app-scroll {
+	-webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+	overscroll-behavior: contain;
+	overflow-y: auto;
+	scrollbar-width: none; /* Firefox */
+	-ms-overflow-style: none; /* IE 10+ */
+}
+.app-scroll::-webkit-scrollbar {
+	display: none; /* Chrome, Safari, Opera */
+}
+
+/* Utility to visually constrain the phone frame */
+.phone-frame {
+	margin: 0 auto;
+}
+
+/* Page header - makes headers sticky inside the scroll area */
+.page-header {
+	position: sticky;
+	top: 0;
+	z-index: 40; /* sits above content but below modals */
+	-webkit-backdrop-filter: blur(0px);
+}
+
+/* Ensure header children have a background so content doesn't show through when stuck */
+.page-header > * {
+	background: inherit;
+}
+
+/* === Tap’nPay Phone Field (pixel layout) === */
+.tp-phone-wrap {
+  height: 48px;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.tp-phone-wrap:focus-within {
+  border-color: #5B35D5;
+  box-shadow: 0 0 0 3px rgba(91, 53, 213, 0.18);
+}
+
+/* remove default library layout borders */
+.tp-phone-wrap .PhoneInput {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.tp-country-btn {
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 12px;
+  background: transparent;
+  border: 0;
+  position: relative;
+  min-width: 110px;
+}
+
+.tp-divider {
+  width: 1px;
+  height: 24px;
+  background: #E5E7EB;
+  display: inline-block;
+  margin-left: 2px;
+}
+
+/* Ensure the input fills the remaining area */
+.tp-phone-wrap .PhoneInputInput {
+  height: 100%;
+  border: 0 !important;
+  background: transparent !important;
+  outline: none !important;
+}
