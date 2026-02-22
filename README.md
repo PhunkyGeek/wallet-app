@@ -258,6 +258,6 @@ The application supports theme switching from Profile Settings with persistence 
 
 ## Author
 
-Ronald Abel
+Ronald Abel-Obi
 
 
