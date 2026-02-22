@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wallet App UI</title>
+    <script>
+      // Apply theme early to avoid flash: read localStorage 'app_theme' and apply 'dark' class accordingly.
+      (function(){
+        try {
+          var t = localStorage.getItem('app_theme');
+          if (!t || t === 'system') {
+            var prefers = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (prefers) document.documentElement.classList.add('dark');
+          } else if (t === 'dark') {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
