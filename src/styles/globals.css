@@ -104,3 +104,27 @@ body { @apply bg-bg text-ink; font-family: 'Sora', ui-sans-serif, system-ui, -ap
   background: transparent !important;
   outline: none !important;
 }
+
+/* Dark mode tweaks for the phone field */
+.dark .tp-phone-wrap {
+  border-color: rgba(255,255,255,0.06);
+  background: #0B0F1A;
+}
+.dark .tp-phone-wrap:focus-within {
+  border-color: #5B35D5; /* keep same brand purple */
+  box-shadow: 0 0 0 3px rgba(91, 53, 213, 0.18);
+}
+.dark .tp-phone-wrap .tp-country-btn {
+  color: inherit;
+}
+.dark .tp-phone-wrap .tp-divider {
+  background: rgba(255,255,255,0.06);
+}
+
+/* Placeholder colors for the injected input component */
+.tp-phone-wrap .PhoneInputInput::placeholder {
+  color: #B8BDC7;
+}
+.dark .tp-phone-wrap .PhoneInputInput::placeholder {
+  color: #9CA3AF;
+}

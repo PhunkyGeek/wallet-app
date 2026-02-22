@@ -48,10 +48,9 @@ export function CountrySelect({ value = "JO", onChange }: Props) {
           <span className="text-[14px] font-medium text-ink">{callingCode}</span>
 
           {/* your caret svg */}
-          <img src="/assets/icons/caret.svg" alt="" className="h-3.5 w-3.5 opacity-70" />
+          <img src="/assets/icons/caret.svg" alt="" className="h-3 w-3 opacity-70 text-ink dark:text-white/70" />
 
-          {/* divider */}
-          <span className="tp-divider" />
+          
         </button>
       </Popover.Trigger>
 

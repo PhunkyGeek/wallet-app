@@ -18,7 +18,7 @@ const Input = forwardRef<HTMLInputElement, React.InputHTMLAttributes<HTMLInputEl
         {...props}
         className={[
           "h-full w-full bg-transparent px-3 text-[14px] outline-none",
-          "placeholder:text-[#B8BDC7] text-ink",
+          "placeholder:text-[#B8BDC7] dark:placeholder:text-[#9CA3AF] text-ink",
           props.className ?? "",
         ].join(" ")}
       />
