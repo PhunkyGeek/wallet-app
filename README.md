@@ -1,4 +1,4 @@
-# Wallet App UI — Frontend Engineer Assessment
+# Wallet App UI - Frontend Engineer Assessment
 
 This project is a responsive wallet application built from Figma designs to simulate a modern fintech user experience. It includes authentication, transactions, payments, and transfer flows, with a strong focus on design fidelity, usability, and scalability.
 
@@ -43,7 +43,7 @@ It includes:
 * Bill payment flow
 * Secure payment confirmation step
 * Payment success screen
-* Transfer flow (contact selection → amount → secure payment → failure screen)
+* Transfer flow (contact selection > amount > secure payment > failure screen)
 
 ### More & Settings
 
