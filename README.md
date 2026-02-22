@@ -234,14 +234,9 @@ I implemented cross-browser scrollbar hiding with smooth touch scrolling.
 
 ## Screenshots
 
-Include screenshots or GIFs demonstrating:
+Follow link below to view screenshots:
 
-* Authentication flow
-* Dashboard
-* Cards screen
-* Bill payment flow
-* Transfer flow
-* Dark mode
+https://www.notion.so/ronaldshakur/wallet-app-ui-screenshots-1da4bf4f8aaf802cb61df93928dc28be?source=copy_link
 
 ---
 
