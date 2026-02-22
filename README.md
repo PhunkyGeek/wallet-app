@@ -164,7 +164,6 @@ I implemented a custom country selector using `react-phone-number-input` with a 
 * flag
 * country code
 * custom caret icon
-* divider
 * input field
 
 ### Why not use react-international-phone
